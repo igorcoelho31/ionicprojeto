@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+<ion-toolbar mode="ios" color="dark">
+
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title> Adicionar Produtos </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+<form #form="ngForm" (ngSubmit)="cadastro(form)">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Produto:</ion-label>
+        <ion-input  fill="solid"  type="text" name="produto" ngModel></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Quantidade:</ion-label>
+        <ion-input fill="solid"  type="text" name="quantidade" ngModel></ion-input>
+      </ion-item>
+      
+    </ion-list>
+
+    <ion-button expand="full" class="btn btn-primary mt-3" type="submit" color="success" >{{ nameButton }}</ion-button>
+    
+</form>
+
+
+
+<h3><strong>Lista: </strong></h3>
+
+<ion-list lines="inset" *ngFor="let produto of meusProdutos">
+  <ion-item>
+    <ion-label>{{ produto.produto }} | {{ produto.quantidade}} Kg/Qntd </ion-label>
+    <ion-button expand="full" (click)="deletar(produto.id)" color="danger">Excluir</ion-button>
+  </ion-item>
+</ion-list>
+
+  </ion-content>
